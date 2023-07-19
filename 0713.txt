@@ -1,0 +1,189 @@
+나를 소개하는 페이지 만들기
+my info - 이름, 생년월일, 현 거주지, 태어난 곳
+my style - 성격, 취미, 
+big events - 유치원 때 공연 MC 맡음 -> 중간에 울었음, 초등학교 5학년 서울시 동부교육청 달리기 2등, 팔 골절, 방송부에서 아나운서 맡음, 고등학교 때 연극부, 
+게임에 빠짐,  재수, 공대 입학, 싸피..
+ 스포츠 관련
+
+이름, 생년월일, 현 거주지, 취미, 목표, 
+스포츠 - 좋아하는 팀 => 맨유 - https://file.carisyou.com/contents/imgfiles/422/1/62541_1.jpg
+________________________________________________________________________________________________________________________________________________________________________________
+
+## 차이 알기
+
+Library -> 미리 만든 클래스들의 묶음 / *.jar (*.class) 클래스들의 묶음을 jar 파일로 압축 
+Pattern -> Design Pattern(오랜 경험들을 통해 알게 된 문제들의 해결책을 문서화한 것) (MVC Pattern, DAO Pattern, DTO Pattern, Singleton Pattern, Factory Pattern)
+Framework -> 뼈대(Template) ex) Spring, MyBatis
+Architecture -> Model 1 Architecture, Model 2 Architecture(주로 사용)
+
+=> Model2 Architecture 기반에 Design Pattern에 맞는 Framework -> Spring
+
+
+## 웹 개발 관련 용어
+1. Library : class들의 묶음, *.jar
+2. Pattern
+    -- Design Pattern
+    -- MVC Pattern
+    -- DAO (Data Access Object) Pattern
+    -- DTO (Data Transfer Object) Pattern
+    -- Singleton Pattern
+    -- Factory Pattern
+
+3. Framework
+    -- Spring Framework
+    -- MyBatis Framework
+    -- JavaScript Framework: bootstrap, vue.js
+   
+4. Architecture
+    -- Model 1 Architecture
+    -- Model 2 Architecture : 권장
+
+
+
+host: 운영체제가 깔려있는 시스템
+client
+
+## 요청 ~ 응답 흐름
+
+사용자 ---> UI (요청화면)
+	  
+** 구글링해서 개념 정리 해볼것! MVC Pattern / DAO Pattern / DTO Pattern
+View  ------>   Controller  --------->  Model  --------> RDBMS		
+                                            (Service, DTO, DAO)          Table(MySQL, Oracle...)
+                                       service의 역할? -> 업무처리 / 가공처리(의사결정) => information(검증X)                                    
+
+
+## MVC Pattern
+-- Model
+    >> 업무 처리 로직: business, service, process
+    >> DB 처리 로직: DAO(Data Access Object)
+    >> 도메인 객체: 
+             => 데이터(값)을 갖는 객체, 값을 갖고 이동하는 객체
+             => VO(Value Object)
+             => DTO(Data Transfer Object)
+
+-- View
+    >> 화면 처리 로직
+    >> UI
+    >> CUI: Command Line User Interface: JavaSE(IO)
+    >> GUI: Graphic User Interface: JavaEE(html, jsp), JavaSE(awt, swing)
+
+-- Controller
+    >> 요청 ~ 응답 제어하는 로직
+    >> JavaSE: class 설계
+    >> JavaEE: Servlet class 
+
+
+## DAO (Data Access Object) Pattern
+-- 데이터 처리 로직
+-- 데이터베이스에 대한 CRUD 로직
+-- SQL: INSERT, SELECT, UPDATE, DELETE
+
+
+## DTO (Data Transfer Object) Pattern
+-- 값을 갖고 이동하는 도메인 객체
+-- DTO의 속성 (멤버변수)는 테이블의 컬럼 구조와 매핑 설계
+
+
+## FrontEnd
+-- 화면단 설계
+-- html
+-- css
+-- javascript
+
+
+## BackEnd
+-- 서버단 설계
+-- servlet/jsp
+-- framework
+-- DBMS: DBA 업무 분장
+
+
+## FullStack
+-- FrontEnd + BackEnd(DB 포함)
+
+
+## 화면 설계 기술
+-- html: 화면 구조 담당, static contents(정적 화면)
+    >> JavaEE: jsp (dynamic contents)
+-- css: 화면 표현(스타일) 담당 - 색상, 크기 등
+-- javascript: 
+    >> 화면 이벤트 처리 담당, 데이터 검증, 동적 화면 작성(dynamic contents)
+
+
+## html
+-- hypertext markup language
+-- html/html4 vs html5
+-- 표준: html5
+-- tag 기반으로 static contents 화면 설계
+
+
+## 태그(tag, element) 종류 및 구조
+1. body content가 있는 유형
+    <시작태그명 속성명 = "속성값" / 속성명 = '속성값' (앞에 2개를 권장)/ 속성명 = 속성값 / 속성명>
+    	body content
+    </태그명>
+
+2. body content가 없는 유형: empty element
+    <태그명></태그명> (엔터나 탭키도 다 안됨)
+    
+## css: 화면 표현(스타일) 담당 - 색상, 크기 등
+-- 기본형식: 
+	selector {
+		property:value; property:value;
+	}
+
+-- selector
+	>> 태그명
+	>> #아이디: unique 지정
+	>> .class: group 지정
+
+
+
+
+
+1. inline: 
+    -- 해당 태그에만 적용 범위
+    -- 태그 지정 <tag style = "width: 300; height: 200";>내용</tag>
+2. embedded:
+    -- 해당 html 문서에만 적용 범위 
+    -- html head에 선언
+    -- <style> .... </style>
+3. external
+    -- 별도의 css 파일로 분리 설계 작성
+    -- html 페이지에서 링크 사용
+    -- 권장: 표준화, 재사용, 유지보수 편리 
+4. imported
+    -- embedded + external
+    -- 부분 수정 사용 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
