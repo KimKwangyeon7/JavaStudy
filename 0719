@@ -68,7 +68,7 @@ ex) Person in a Object, SpiderMan is a Person
   -- blank final - 값이 할당되지 않은 멤버 변수
   -- static fianl
 
-
+## 접근 제한자 (public, protected, package(default), private)
 
 
 
