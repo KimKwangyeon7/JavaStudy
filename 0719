@@ -85,7 +85,11 @@ ex) Person in a Object, SpiderMan is a Person
     -- method 내부 -> 해당 클래스 멤버 변수 -> 조상 클래스 멤버 변수
 
   -- super()는 조상 클래스의 생성자를 호출
-
+  
+  -- 부모의 생성자를 명시적으로 지정:
+	>> super(params)
+	>> 자식 생성자에서 명시적으로 부모 생성자를 지정하지 않으면 자도응로 부모의 기본생성: super();
+	>> 자식 객체의 생성자의 첫번째 수행문 위치: this와 super는 동시 사용 불가
 
 -- final: 마지막, 더 이상 바뀔 수 없음
   -- final class - 더 이상 확장 X: 상속 금지 -> 오버라이드 방지
