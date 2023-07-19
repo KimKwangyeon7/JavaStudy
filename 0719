@@ -44,6 +44,7 @@ ex) Person in a Object, SpiderMan is a Person
 - 포함 관계: 상속 이외에 클래스를 재활용하는 방법
   -- 2개 이상의 클래스에서 특성을 가져올 때 하나는 상속, 나머지는 멤버변수로 처리
 
+ 
 
 
 
