@@ -142,6 +142,11 @@ ex) Person in a Object, SpiderMan is a Person
     >> publict 권한의 클래스가 없는 경우에 파일명은 마음대로 지정 가능함
     >> 보통 main(), 중심이 되는 클래스이름.java 주로 지정함
 
+## class 구성요소
+1. 멤버변수 선언문
+2. 생성자 선언문: 기본생성자 > 매개변수 작은 개수 순서대로 구현
+3. 멤버 메서드 선언문 
+
 ## MVC Pattern
 -- Model
 	>> 업무 처리 로직 (Business/Service/Process Logic)
@@ -199,6 +204,39 @@ ex) Person in a Object, SpiderMan is a Person
 
 
 
+
+
+
+회원관리 프로젝트
+--- 객체 추출 : 회원, 게시판, 공지, 상품 등
+
+회원(Member) 객체 => 클래스(Abstraction)
+속성(멤버변수): 목록 추출, 타입, 제약, 길이, 순서
+(grade)등급: 일반(G), 우수(S), 관리자(A) : String(확장성) / char
+(mileage)마일리지: 일반 : int
+(memberId)아이디 : String
+(memberPw)비밀번호 : String
+(name)이름 : String
+(mobile)휴대폰: 010-1234-1234(형식-String), 01012341234(형식-String)
+(email)이메일: String
+(manager)담당자: String
+(entryDate)가입일: String(고정형식, 연산하지않음) / Date(가변형식, 연산필요)
+기능(메서드)
+관리자회원 등록 초기화
+마일리지정책: 회원가입, 로그인, 가입1주년 등
+전체회원조회: 관리자(회원 비밀번호 * 대체 보안변환)
+우수회원 등업: 일반 100,000 이상, 담당자배정, 마일리지 초기화
+담당자 랜덤 배정
+가입(아이디, 비밀번호)
+로그인(아이디, 비밀번호)
+내정보조회
+비밀번호변경
+내정보전체변경
+비밀번호 보안문자 변환 : 공통 유틸 분리
+비밀번호찾기(아이디, 이름, 휴대폰/이메일)
+아이디찾기(이름, 휴대폰/이메일)
+유틸 공통 클래스: Utility
+보안문자 변환: 비밀번호, 이름, 휴대폰 등
 
 
 
