@@ -99,3 +99,43 @@ ex) Person in a Object, SpiderMan is a Person
 
 **** Exception 전까지가 과목평가 범위 담주 월 / 담주 금은 관통프로젝트
 
+
+## 자바 소스파일의 구조
+1. package 선언문
+-- 형식: package top.sub;
+-- 사용횟수: 0(default package), 1
+-- 물리적으로 폴더 개념
+-- 목적: 관련 클래스들의 효율적인 관리, 권한 제어, 이름 충돌 방지
+-- 해당 회사(단체) url을 뒤집어서 사용함: 공개 시에 패키지 명 충돌 방지
+  >> http://www.ssafy.com
+  >> package com.ssafy.model;
+-- 패키지 레벨: 2 ~ 4
+
+2. import  선언문
+-- 사용횟수: 0 ~ N
+-- javac(컴파일), java(실행) 시에 현재 클래스에서 사용한 다른 클래스의 경로 지정
+-- 생략 가능한 클래스 패키지:
+    (1) java.lang.*: // sub-package는 포함하지 않음, 클래스에만 적용됨
+    (2) same package: 
+-- 소스코드 지정:
+        (1) import java.util.*;
+        (2) import java.util.ArrayList; (권장)
+        (3) 동일한 이름의 클래스가 다른 패키지에 존재하는 경우
+            => import 구문 대신에 클래스 명 앞에 패키지 명을 포함해서 지정해야함
+            ex)
+            import java.util.Date;
+            import java.sql.Date;
+            
+            java.util.Date date = new java.util.Date();
+            java.sql.Date date = new java.sql.Date();
+-- javac(컴파일), java(실행) 시에 지정: classpath 경로 지정
+
+3. class 선언문 
+-- 사용횟수: 1 ~ N
+    >> 다중 클래스 선언은 가능하지만 권장하지는 않음
+    >> 테스트 시에 사용하기도 함
+    
+
+
+
+
