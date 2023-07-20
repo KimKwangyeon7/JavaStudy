@@ -1,0 +1,171 @@
+## 7/17(월)
+
+-- 라이브 수업 배포 MM "10.LIVE" 채널에서 다운 받으시기 바랍니다.
+-- 자바 workspace 폴더(참고): C:\SSAFY\workspace\02.java 
+-- 다운 받은 배포 파일을 java workspace에 미리 import 하여도 됩니다
+
+## [반장님의 공지사항입니다.] 입실 및 건강설문 하세요 ^^
+
+## 최고의 10기 광주5반 오늘 라이브 멋진 인사 마구마구 요이땅 해주세요 ^^
+
+
+## 라이브
+1. 자바 기본
+-- 데이터타입, 연산자, 명령어
+-- 실수형 정밀도 차이
+	>> float : 32bit, 정밀도 소수이하 8자리(9자리에서 반올림 처리)
+	>> double: 64bit, 정밀도 소수이하 17자리(18자리에서 반올림 처리)
+-- 형식 지정 출력
+	>> 
+	
+2. 배열
+
+## 배포 파일 import
+-- java version 설정 
+	>> 배포 jdk10 => (변경) jdk1.8
+	>> import project properties
+		=> (확인) Java Build path : 1.8
+		=> (변경) Project Facets > Java > JDK 1.8 
+		=> Apply
+## Array(배열)
+-- 자료 저장 구조
+-- static collectio: 크기 고정(immutable)
+	>> 자동 확장 불가
+	>> CRUD 관련 기능(메서드) 제공없음
+	>> 배열명.length 변수 = 배열 크기가 저장된 변수
+	>> 기본형, 객체형 
+	>> 다형성적용(Polymorphism)
+-- 다차원 배열
+	>> 1차원
+	>> 2차원
+	>> 3차원
+	>> ..
+-- 배열관련 예외 클래스: ArrayIndexOutOfBoundsException
+	>> 배열요소를 잘못 접근 한 경우에 발생되는 예외
+	
+-- 사과쟁반 : 사과만 담아야함
+-- 과일쟁반 : 모든 과일 담기(사과, 딸기, 수박)
+-- 쟁반 : 과일, 장남감, 책 	
+
+## Modifiers(제어자)
+1. 접근제한자: Access Modifiers
+(1) + : public (universe)
+(2) # : protected (sub-class)
+(3) 생략: package, default, friendly (same-package)
+(4) - : private (same-class)
+
+-- class : public, default
+-- 멤버변수 : public, protected, default, private
+-- 메서드  : public, protected, default, private
+-- 생성자  : public, protected, default, private
+
+-- 지역변수, 매개변수
+	>> 선언위치: 생성자 매개변수, 생성자 내부, 메서드 매개변수, 메서드 내부, 제어문 내부
+	>> default 만 가능
+
+2. 사용제어자: Usage Modifiers (Non-Access Modifiers)
+(1) static : 객체생성없이 사용가능, 클래스이름.static메서드이름(), 클래스이름.static멤버변수명
+(2) abstract
+(3) final
+(4) ...
+
+
+## 1차원 배열 : Lotto645.java
+-- 방법1:
+1. 선언
+	[modifiers] 타입[] 배열명;
+	[modifiers] 타입 배열명[];
+	public int[] numbers;
+	
+2. 배열객체 생성 및 할당
+	배열명 = new 타입[배열크기];
+	numbers= new int[6];
+	
+3. 배열요소 값사용: 할당, 변경, 조회
+	-- 배열요소인덱스 시작 : 0
+	-- 배열요소인덱스 최대 : 배열크기 - 1
+	
+	배열명[배열요소인덱스] = 값;
+	
+-- 방법2:
+1. 선언 + 2. 배열객체 생성 및 할당
+[modifiers] 타입[] 배열명 = new 타입[배열크기];
+
+-- 방법3: 	
+1. 선언 + 2. 배열객체 생성  + 3. 명시적 초기값 할당
+(1) [modifiers] 타입[] 배열명 = new 타입[]{초기값1, 초기값2, 초기값x};
+(2) [modifiers] 타입[] 배열명 = {초기값1, 초기값2, 초기값x};
+
+
+## new 키워드
+1. 배열객체 생성 순서
+(1) 메모리 할당
+(2) 기본값 자동 초기화
+(3) 명시적 초기화 : 선택
+(4) 배열객체에 대한 참조값을 할당
+
+2. 객체 생성
+
+
+## 자바 데이터타입 기본값
+1. 정수형: 0
+2. 실수형: 0.0
+3. 논리형: false
+4. 단일문자형: 공백문자, '\u0000'
+5. 객체형: null (String null)
+
+## API
+-- java.lang.System
+-- java.lang.Math
+-- java.util.Random
+-- java.util.Arrays
+
+
+## 다차원 배열: 2차원 배열
+-- 행과 열로 구성된 배열
+-- 2차원배열명.length 변수에는 행크기가 저장된 변수
+-- 2차원배열명[행번호].length 변수에는 해당행의 열크기가 저장된 변수
+
+-- 방법1:
+	(1) 선언 : 
+		타입[][] 2차원배열명;
+		타입 2차원배열명[][];
+	
+	(2) 생성: 행마다 열의크기가 동일
+		2차원배열명 = new 타입[행크기][열크기];
+		
+		생성: 행마다 열의크기가 각각 다르게 지정
+		2차원배열명 = new 타입[행크기][];
+		2차원배열명[행번호] = new 타입[해당행의열크기];
+		
+	(3) 요소 사용
+		2차원배열명[행번호][열번호] = 값;
+		
+
+
+-- 방법2: (1) 선언 + (2) 생성
+	타입[][] 2차원배열명 = new 타입[행크기][열크기];
+	
+-- 방법3: (1) 선언 + (2) 생성 + (3) 명시적 초기화
+	타입[][] 2차원배열명 = { {1, 2, 3}, {10, 20}, {100, 200, 300, 400} };
+	
+	
+## format 형식 지정 출력하기	
+-- System.out.println();
+-- System.out.println(param);
+
+-- System.out.print(param);
+
+-- System.out.printf("형식 지정", params);
+-- System.out.println(String.format());
+
+## 실습: 7/17(월) TODO
+1. 라이브 실습
+	ArrayTest_19.java	
+	ArrayTest_20.java
+	ArrayTest_21.java
+	ArrayTest_22.java
+
+2. 데일리실습: 1-3: 숫자출력, 가위바위보게임
+
+3. 데일리과제: 1-2: 구구단
