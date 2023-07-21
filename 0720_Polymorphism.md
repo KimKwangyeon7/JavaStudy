@@ -75,7 +75,11 @@ java api charAt, length() length
 추상 메서드 인터페이스 
 @override
 modifier 접근권한자 static,final, static멤버변수-class area
+call by value call by reference
+static 안에는 static 멤버만
 
+변수 범위 확실하게 알기
+static인스턴스
 
 
 
