@@ -60,5 +60,23 @@ ________________________________________________________________________________
 
 memberservice, objecttes, member....
 
+null, 연산자, ++ -- print / ln / f 연산결과 꼼꼼히
+&와 && 차이
+switch는 int 문자열 byteshortlong
+continue break continue label명
+switch도빠져나옴
+생성자 중복정의
+tostring equals hashcode 재정의 같이
+this, super, this(), super() 부모의 기본 생성자 여부 확인
+오버로드 오버라이딩 규칙 
+동적바인딩 - 오버라읻ㅇ 재정으한 메서드는 재정의한 쪽으로
+배열 선언 생성 ... 자세하게 방법들 다 볼것
+java api charAt, length() length
+추상 메서드 인터페이스 
+@override
+modifier 접근권한자 static,final, static멤버변수-class area
+
+
+
 
 
