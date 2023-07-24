@@ -1,0 +1,3 @@
+## 예외 처리
+- checked Exception: 예외에 대한 대처 코드 없으면 컴파일 X
+- Unchecked Exception: 일단 컴파일은 진행
