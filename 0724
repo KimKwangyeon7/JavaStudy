@@ -1,3 +1,28 @@
 ## 예외 처리
 - checked Exception: 예외에 대한 대처 코드 없으면 컴파일 X
 - Unchecked Exception: 일단 컴파일은 진행
+
+--  try ~ catch 구문
+try {
+  // 예외가 발생할 수 있는 코드
+}
+catch(XXException e){ // 던진 예외를 받음
+  // 예외가 발생했을 때 처리할 코드
+}
+
+-- Exception 객체의 정보 활용
+  >> Throwable의 주요 메서드
+    - public String getMessage()
+    - public Throwable getCause()
+    - public void printStackTrace()
+
+-- try-catch문에서의 흐름
+  >> try 블록에서 예외가 발생 -> JVM이 해당 Exception 클래스의 객체 생성 후 던짐(throw)
+     -> 던져진 exception을 처리할 수 있는 catch 블록에서 받은 후 처리 -> 정상적으로 처리되면 try-catch 블록을 벗어나 다음 문장 진행
+     -> 어떠한 예외도 발생하지 않은 경우 catch문을 거치지 않고 다음 문장 진행
+
+-- 다중 exception handling => 다형성(매개변수 작은 범위에서 큰 범위)
+
+-- try ~ catch ~ finally 구문을 이용한 예외 처리
+  - finally 는 예외 발생 여부와 상관 없이 언제나 실행
+    - 중간에 return을 만나는 경우도 finally 블록을 먼저 수행 후 리턴 실행
