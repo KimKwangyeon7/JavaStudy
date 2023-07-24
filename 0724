@@ -26,3 +26,83 @@ catch(XXException e){ // 던진 예외를 받음
 -- try ~ catch ~ finally 구문을 이용한 예외 처리
   - finally 는 예외 발생 여부와 상관 없이 언제나 실행
     - 중간에 return을 만나는 경우도 finally 블록을 먼저 수행 후 리턴 실행
+
+
+-----------------------------------------------------------------------------------------------------
+** 요약노트 - 키워드 위주로 간단하게 (예제까지 만들어서)
+
+
+-- 예외:
+    >> 프로그램 수행 중에 발생하는 문제(오류), 예기치 못한 상황 발생
+	>> 예외 발생은 수행문 수행 중에 발생됨
+		=> 메서드 수행 시에
+		=> 생성자 수행 시에
+-- 예외 처리
+	>> 예외 발생에 대한 처리 로직
+	>> 예외 처리를 하지 않으면 프로그램이 강제 종료
+
+	1. 직접 예외 처리 하는 방법: 메서드 또는 생성자 정의 시에 직접 예외 처리
+		
+		(1) try {
+				// 예외 발생 가능한 수행문
+			} catch(예외클래스이름1 참조변수명) {
+			
+			} catch(예외클래스이름1 참조변수명) {
+
+			} catch(예외클래스이름1 참조변수명)
+
+			}
+		(2)
+		
+		(3)
+		
+		(4)
+
+	2. 예외 처리를 전가시키는 방법: 메서드를 호출하는 호출측에게 예외 처리를 위임
+		=> 메서드를 호출하는 호출측에게 예외 처리를 위임
+		=> 메서드 선언문 또는 생성자 선언문에 발생 가능한 예외를 표기해야함
+
+		[modifier] 반환타입 메서드명 (args) throws 예외클래스이름1, 예외클래스이름x { }
+		[modifier] 클래스이름 (args) throws 예외클래스이름1, 예외클래스이름x { }
+
+-- 예외 API
+	>> java.lang.Throwable: getMessage(): String, printStackTrace(): void
+	>> Error:
+		=> H/W 문제, 개발자 예외 처리 불가한 오류, power off, cpu fail 등
+	>> Exception:
+		=> S/W 예외, 개발자 예외 처리 가능한 예외, 
+		=> NullPointerException, ClassCastException, ArrayIndexOutOfBoundsException 
+		=> IOException, EOFException, SQLException
+	
+	>> RuntimeException
+		=> NullPointerException, ClassCastException, ArrayIndexOutOfBoundsException
+	>> non-RuntimeException (super: Exception)
+		=> IOException, EOFException, SQLException
+
+-- 종류:
+	1. checked exception
+		>> non-RuntimeException (super: Exception)
+		>> IOException, EOFException, SQLException
+		>> javac(컴파일) 시점에서 예외 처리 체킹함!
+		>> 예외 처리 필수: 예외 처리하지 않으면 javac 컴파일하지 않음(컴파일 오류 메세지 출력)
+
+	2. un-checked exception
+		>> RuntimeException
+		>> javac(컴파일) 시점에서 예외 처리 여부를 체킹하지 않음
+		>> 예외 처리 선택
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
