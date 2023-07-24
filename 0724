@@ -40,6 +40,9 @@ catch(XXException e){ // 던진 예외를 받음
 -- 예외 처리
 	>> 예외 발생에 대한 처리 로직
 	>> 예외 처리를 하지 않으면 프로그램이 강제 종료
+		=> 발생한 예외 메세지와 예외 트래킹 정보를 출력
+			=> getMessage(): String
+			=> printStackTrace(): void - 개발 시에 디버깅 목적으로 사용!
 
 	1. 직접 예외 처리 하는 방법: 메서드 또는 생성자 정의 시에 직접 예외 처리
 		
@@ -115,6 +118,21 @@ catch(XXException e){ // 던진 예외를 받음
 		>> javac(컴파일) 시점에서 예외 처리 여부를 체킹하지 않음
 		>> 예외 처리 선택
 
+## 사용자 예외 클래스 정의 방법(규칙)
+1. extends Exception
+	>> checked exception
+	>> 반드시 예외 처리를 해야함
+
+2. super("예외메세지";)
+
+3. class 구성요소 필요시 추가: 멤버변수, 메서드, 생성자 중복정의 등
+
+
+## 개발자가 명시적으로 예외를 발생시키는 방법
+-- 목적: 개발 시에 예외 처리 테스트, 사용자 정의한 예외 발생
+-- 형식: 
+	throw new 예외클래스이름();
+	throw new 예외클래스이름(params);
 
 
 
@@ -127,6 +145,140 @@ catch(XXException e){ // 던진 예외를 받음
 
 
 
+-------------------------------------
+else {
+						int[] next = {xx, yy};
+						
+						if (board[xx][yy] == 0) { // 장애물이 없을 때
+							qu.offer(next);
+							visit[xx][yy] = true;
+						}
+						if (board[xx][yy] == 2) {
+							if (time % 3 == 2) { // 소용돌이가 없을 때
+								qu.offer(next);
+								visit[xx][yy] = true;
+							}
+							else {
+								qu.offer(tmp); // 소용돌이가 끝날 때 다시 가는 경우가 있으므로 poll한 tmp를 다시 넣어줌
+								continue;
+							}
+						}
+					}
 
+____________________________________________________________________________________________________________
+/**
+ * 
+ */
+package swea_algorithm;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.StringTokenizer;
 
+/**
+ * @author SSAFY
+ *
+ */
+public class algorithm_0724 {
+
+	/**
+	 * @param args
+	 */
+	static int N;
+	static int[][] board;
+	static int[] A = new int[2];
+	static int[] B = new int[2];
+	static int[] dx = {0, 1, 0, -1};
+	static int[] dy = {1, 0, -1, 0};
+	static boolean[][] visit;
+	
+	
+	public static void main(String[] args) throws Exception{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+		StringBuilder sb = new StringBuilder();
+		
+		int T = Integer.parseInt(br.readLine());
+		
+		for (int tc = 1; tc <= T; tc++) { // 테케 시작
+			int N = Integer.parseInt(br.readLine()); // 수영장의 크기를 변수 N에 담음
+			visit = new boolean[N][N]; // 2차원 배열 visit의 크기를 지정하고 값도 false로 초기화
+			board = new int[N][N];
+			
+			for (int i = 0; i < N; i++) { // 2차원 배열 board에 수영장 모양을 담음
+				st = new StringTokenizer(br.readLine());
+				for (int j = 0; j < N; j++) {
+					board[i][j] = Integer.parseInt(st.nextToken());
+				}
+			}
+			
+			st = new StringTokenizer(br.readLine());// 시작점 받기
+			A[0] = Integer.parseInt(st.nextToken());
+			A[1] = Integer.parseInt(st.nextToken());	
+			
+			st = new StringTokenizer(br.readLine());// 도착점 받기
+			B[0] = Integer.parseInt(st.nextToken());
+			B[1] = Integer.parseInt(st.nextToken());
+			
+			if (A[0] == B[0] && A[1] == B[1]) {
+				sb.append(0);
+				continue;
+			}
+			
+			Queue<int[]> qu = new LinkedList<>(); // 이동 경로를 담을 큐 생성
+			qu.offer(A); // 우선 시작점을 담고 방문 처리
+			visit[A[0]][A[1]] = true;
+			int time = 0; // 걸린 시간을 표현하기 위해 time 변수 초기화
+			int res = 0;
+			int[] ans = new int[2];
+			sb.append("#").append(tc).append(" "); // 출력할 문자열 sb에 저장
+			
+			while (!qu.isEmpty()) {
+				int b = qu.size();
+				for (int i = 0; i < b; i++) {
+					int[] tmp = qu.poll(); // 큐에서 원소를 빼며 그 값을 tmp에 저장
+					
+					for (int k = 0; k < 4; k++) {
+						int xx = tmp[0] + dx[k];
+						int yy = tmp[1] + dy[k];
+						
+						if (!isBoundary(xx, yy) || !visit[xx][yy] || board[xx][yy] == 1) { // 경계에서 벗어나거나 이미 방문한 곳이거나 
+								continue;														   // 장애물이 있는 곳인 경우 제외				
+						}
+						if (xx == B[0] && yy == B[1]) { // 도착지인 경우 그 시간을 출력하기 위해 sb에 쌓고 for문과 while문을 나감
+							time++; // 모든 이동이 끝났을 때 도착지에 갈 수 있는지 확인하기 위해 설정
+							qu.clear();
+							break;
+						}
+						if (board[xx][yy] == 2) {
+							if (time % 3 != 2) {
+								qu.offer(tmp);
+								continue;
+							}
+						}
+						int[] next = {xx, yy};
+						visit[xx][yy] = true;
+						qu.offer(next);
+				}
+				time++; // 4방향을 다 간 후 time 1 증가
+				}
+				}
+				
+			
+			if (time != 0) {
+				sb.append(time).append("\n");
+			}
+			else {
+				sb.append(-1).append("\n");
+			}
+		}
+		System.out.println(sb);	
+	}
+	
+	static boolean isBoundary(int x, int y) {
+		return x >= 0 && x < N && y >= 0 && y < N;
+	}
+
+}
