@@ -25,30 +25,65 @@
 
 ## List 계열 구현 클래스
 -- ArrayList, LinkedList, ...
->> C - boolean add(E e), void add(int idx, E element) 
+>> C - boolean add(E e), 
+	   void add(int idx, E element) 
+
 >> R - E get(int idx)
->> U - E set(int idx, E elemetn)
->> D - boolean remove(Object o)
+
+>> U - E set(int idx, E element)
+
+>> D - E remove(int idx) -> 삭제하는 정보를 반환, 
+	   boolean remove(Object o)
+
 >> 크기 - int size()
+
+>> 기타
+	>> int indexOf(Object o)
+	>> Iterator<E> iterator(): 단반향 검색
+	>> ListIterator<E> iterator(): 양방향 검색
 
 ## Set 계열 구현 클래스
 -- HashSet, TreeSet, LinkedHashSet, ...
 >> C - boolean add(E e)
->> R - E get(int idx)
->> U - 
+
+>> R - ?? => Iterator api 활용
+
+>> U - ?? => Iterator api 활용
+
 >> D - boolean remove(Object o)
+
 >> 크기 - int size()
+
+>> 기타
+	>> Iterator<E> iterator(): 단반향 검색
+		=> next(), hasNext(), remove()
 
 ## Map 계열 구현 클래스
 -- HashMap,TreeMap, ...
->> C - V put(K key, V value)
+>> C - V put(K key, V value) : key가 존재하지 않으면 추가
+	   V putIfAbsent(K key, V value)
+
 >> R - V get(Object key)
->> U - replace()
->> D - V remove(Object key)
+
+>> U - 	??
+		V put(K key, V value) : key가 존재하면 변경
+		V replace(Object key),
+	   	boolean replace(K key, V oldValue, V newValue)
+
+>> D - V remove(Object key),
+	   boolean remove(Object key, Object value)
+
 >> 크기 - int size()
 
 ## Iterable interface
 -- Collection
 
+## Iterator
+-- List, Set 계열 단방향 검색
+-- next(), hasNext(), remove()
 
+## ListIterator
+-- List 계열 양방향 검색
+-- next(), hasNext(), remove()
+-- hasPrevious(), previous(), add(E), set(E)
 
