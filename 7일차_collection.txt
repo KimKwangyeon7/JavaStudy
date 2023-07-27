@@ -1,0 +1,142 @@
+## 7/25(화) - 7일차: Collection
+
+-- java.util.Collection interface
+	>> List interface
+	>> Set interface
+-- java.util.Map interface
+
+-- Generic API
+	>> jdk1.5
+	>> E : Element Object
+	>> K : Key Object
+	>> V : Value Object
+	>> T : Type Object
+
+## 자료 저장구조
+1. List
+-- 순서 있음, 중복 허용 
+2. Set
+-- 순서 없음, 중복 불가
+3. Map
+-- K, V 형식
+-- Key는 중복 불가
+-- Value는 중복 가능
+
+## List 계열 구현 클래스
+-- ArrayList, LinkedList 등
+-- C : 
+	boolean	add(E e)
+	void	add(int index, E element)
+-- R :
+	E	get(int index)
+-- U :
+	E	set(int index, E element)
+-- D :
+	E	remove(int index)
+	boolean	remove(Object o)
+	
+-- 크기 :
+	int	size()
+	
+-- 기타 	
+	>> int	indexOf(Object o)
+	>> Iterator<E>	iterator() : 단방향 검색
+	>> ListIterator<E>	listIterator() : 양방향 검색
+	
+
+## Set 계열 구현 클래스
+-- HashSet, TreeSet, LinkedHashSet 등
+-- C :
+	boolean	add(E e)
+-- R : ?? Iterator api 활용
+-- U : ?? Iterator api 활용
+-- D :
+	boolean	remove(Object o)
+-- 크기 :
+	int	size()
+-- 기타
+	>> Iterator<E>	iterator() : 단방향 검색
+		=> next(), hasNext(), remove()
+
+## Map 계열 구현 클래스
+-- HashMap, TreeMap, 등
+-- C :
+	V	put(K key, V value) : key 존재하지 않으면 추가
+	V	putIfAbsent(K key, V value)
+-- R :
+	V	get(Object key)
+	V	getOrDefault(Object key, V defaultValue)
+-- U : ??
+	V	put(K key, V value) : key가 존재하면 변경
+	V	replace(K key, V value)
+	boolean	replace(K key, V oldValue, V newValue)
+-- D :
+	V	remove(Object key)
+	boolean	remove(Object key, Object value)
+-- 크기 :
+	int	size()
+-- 기타 
+	>> Set<K>	keySet() : Key를 왕창 Set 담아오기
+	>> Iterator<E>	iterator() : 단방향 검색 : Set에 있는 Key 단방향 검색
+	
+##  Iterator
+-- List, Set 계열 단방향 검색
+-- next(), hasNext(), remove()
+
+## ListIterator
+-- List 계열 양방향 검색
+-- next(), hasNext(), remove()
+-- previous(), hasPrevious(), add(E), set(E)
+
+
+## Wrapper API
+-- 기본형 => 객체형 
+-- byte		=> Byte
+-- short	=> Short
+-- int		=> Integer
+-- long		=> Long
+-- float	=> Float
+-- double	=> Double
+-- char		=> Character
+-- boolean	=> Boolean
+
+## Utility 클래스 구현: 서비스 클래스에서 활용해보세요
+-- 공통으로 사용해야 하는 기능을 객체 생성없이 사용하기위한 메서드로 구현
+-- 현재날짜 문자열 반환
+	>> 기본형식: 년도4자리.월2자리.일2자리
+	>> 지정한 형식의 문자열
+	>> 지정한 형식, 지정한 로케일의 문자열 반환
+	
+-- 정수형 숫자를 지정한 형식의 문자열 반환	
+	>> 천단위 컴마 표기
+	>> 기본화폐단위 + 천단위 컴마 표기 
+	>> 지정한형식의화폐단위 + 천단위 컴마 표기
+	
+-- 보안문자, 비밀번호찾기(임시발급번호) 랜덤 반환
+	>> 기본: 4자리 숫자 형식의 문자열
+	>> 지정한길이: 지정한 길의 숫자 형식의 문자열
+	>> 지정한길이, 지정한 대소문자 여부: 지정한 길의 숫자 + 대소문자 조합 문자열 
+
+-- 보안문자 데이터 변환해서 반환: 비밀번호, 중요한 정보를 일부분을 "*" 문자로 대체
+
+## Utility 관련 참고 API
+-- java.util.Locale
+-- java.util.Date
+-- java.text.SimpleDateFormat < DateFormat
+	>> String	format(Date date)
+-- java.util.Calendar
+-- java.util.GregorianCalendar
+
+-- jvav.text.NumberFormat
+
+-- java.util.Random
+-- java.lang.System#nanoTime()
+-- java.lang.Math.random()
+
+
+## 데일리 실습 진행하세요 : 구현 후 반드시 제출하기 클릭하세요
+1. 9-3(Exception) : Exception + 8-3(Collection) 반영
+2. 회원관리(MMS) : 9-3 실습에 업로드 하세요
+	-- Collection
+	-- Exception
+	-- 서비스 : 다양한 기능 구현
