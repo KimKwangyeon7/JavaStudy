@@ -1,0 +1,131 @@
+## 7/24(월) - 6일차: 
+
+-- 예외:
+	>> 프로그램 수행중에 발생하는 문제(오류), 예기치 못한 상황 발생
+	>> 예외발생은 수행문 수행중에 발생됨
+		=> 메서드 수행시에
+		=> 생성자 수행시에
+	
+-- 예외처리
+	>> 예외 발생에 대한 처리 로직
+	>> 예외처리를 하지 않으면 프로그램이 강제 종료 
+		=> 발생한 예외메세지와 예외트래킹정보를 출력
+		=> getMessage():String, 
+		=> printStackTrace():void : 개발시에 디버깅 목적으로 사용!!!!
+	
+	1. 직접 예외처리 하는 방법: 메서드 또는 생성자 정의시에 직접 예외처리 
+	
+		(1) try {
+				// 예외 발생 가능한 수행문
+				
+			} catch(자식-예외클래스이름1 참조변수명) {
+				// 자식-예외클래스이름1 발생시 예외처리 수행문
+				
+			} catch (부모-예외클래스이름1 참조변수명) {
+				// 부모-예외클래스이름1 발생시 예외처리 수행문
+				
+			} catch (Exception 참조변수명) {
+				// 공통 예외처리: S/W 처리 가능한 최상위 예외클래스
+				// 실제 발생한 예외 클래스이름 : 
+				// java.lang.Object#getClass(): Class
+				// java.lang.Class#getSimpleName()
+			}
+		
+		
+		(2)	try {
+		
+			catch() {
+			
+			} finally {
+				// 정상수행, 예외발생시 모두(반드시) 수행해야하는 수행문
+				// 주로 자원해제 : close()
+				// 반드시 수행해야 하는 로직이지만 경우에 따라 수행이 되지 않을 수 있음
+				// 1. 프로그램 강제종료: System.exit(int);
+				// 2. finally 수행중에 예외 발생하는 경우
+			}
+		
+		(3) 코등상으로는 가능하지만 실제 catch 구문이 없으므로 예외 발생시에 처리되지않음
+			try {
+		
+			} finally {
+			
+			}
+		
+		
+		(4) jdk1.7 추가: try with resource
+			-- 자동으로 자원에 대한 해제 수행
+			-- implements AutoCloseable 구현 클래스이어야 가능함
+			try( 자원객체생성 수행문; ) {
+			
+			} catch() {
+			
+			}
+		
+		
+		
+	
+	
+	2. 예외처리를 전가 시키는 방법: 
+		=> 메서드를 호출하는 호출측에게 예외처리를 위임
+		=> 메서드 선언문 또는 생성자 선언문에 발생 가능한 예외를 표기해야함
+		
+		[modifier] 반환타입 메서드명(args) throws 예외클래스이름1, 예외클래스이름x { }
+		[modifier] 클래스이름(args) throws 예외클래스이름1, 예외클래스이름x { }
+
+-- 예외 API
+	>> java.lang.Throwable : getMessage():String, printStackTrace():void
+	
+	>> Error :
+		=> H/W 문제, 개발자 예외처리 불가한 오류, power off, cpu fail 등
+	>> Exception : 
+		=> S/W 예외, 개발자 예외처리 가능한 예외, 
+		=> NullPointerException, ClassCastException, ArrayIndexOutOfBoundsException
+		=> IOException, EOFException, SQLException, 
+	
+	>> RuntimeException (super)
+		=> NullPointerException, ClassCastException, ArrayIndexOutOfBoundsException
+	>> non-RuntimeException (super: Exception)
+		=> IOException, EOFException, SQLException
+	
+	
+-- 종류:
+	1. checked exception
+		>> non-RuntimeException(super: Exception)
+		>> IOException, EOFException, SQLException
+		>> javac(컴파일) 시점에서 예외처리 체킹함!!!!
+		>> 예외처리 필수: 예외처리하지 않으면 javac 컴파일하지 않음(컴파일 오류메세지 출력)
+	
+	2. un-checked exception
+		>> RuntimeException
+		>> javac(컴파일) 시점에서 예외처리 여부를 체킹하지 않음
+		>> 예외처리 선택
+		
+## Overriding 재정읙 규칙		
+1. 전제조건: 상속(표준화)
+2. 동일: 반환타입 메서드이름(매개변수 타입, 순서, 개수)
+3. 다름: 코드 구현부(자식에 맞게끔 수정
+4. 권한: 축소불가 (동일, 확장 가능)
+5. 예외: 확대불가 (미발생, 동일, 축소 가능)
+
+
+## 사용자 예외 클래스 정의 방법(규칙)
+1.	extends Exception 
+	>> checked exception
+	>> 반드시 예외처리를 해야함
+
+2. 	super("예외메세지";
+
+3. 	class 구성요소 필요시 추가: 멤버변수, 메서드, 생성자 중복정의 등
+
+
+## 개발자가 명시적으로 예외를 발생시키는 방법
+-- 목적: 개발시에 예외처리 테스트, 사용자 정의한 예외 발생
+-- 형식: 
+	throw new 예외클래스이름();
+	throw new 예외클래스이름(params);
+	
+	
+## 데일리실습 9-3. 도서 예외처리(Lv3)
+-- 실습 완료 후 반드시 좌측 상단 아이콘(석삼자) "제출하기" 버튼까지 클릭해야합니다.!!!
+-- 자료 저장구조가 Collection으로 되어 있는데 배열로 변경해서 진행바랍니다.
+-- Collection은 내일 진행합니다.
