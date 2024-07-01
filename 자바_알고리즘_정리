@@ -1,0 +1,151 @@
+## 배열 깊은 복사, 얕은 복사
+- 얕은 복사(Shallow Copy) : 복사된 배열이나 원본배열이 변경될 때 서로 간의 값이 같이 변경됨
+- 깊은 복사(Deep Copy) : 복사된 배열이나 원본배열이 변경될 때 서로 간의 값은 바뀌지 않음
+
+## 그리디 알고리즘(탐욕): 선택의 순간마다 당장 눈 앞에 보이는 최적의 상황만을 쫓아 최종적인 해답에 도달하는 방법
+- 성립 조건
+1. 탐욕적 선택 속성: 앞의 선택이 이후의 선택에 영향을 주지 않음
+2.  최적 부분 구조: 문제에 대한 최종 해결 방법은 부분 문제에 대한 최적 문제 해결 방법으로 구성됨
+
+## 플로이드 워샬
+전제: 음수 사이클이 존재하면 안됨(음의 가중치를 갖는 간선은 상관 X)
+- DP 활용. 인접 행렬 이용해 각 노드간 최소비용 계산
+- 초기에 큰 값으로 인접 행렬 초기화 
+- 1개, 2개, ... 거쳐서 해당 노드로 가는 비용 중 최소값 저장
+- 시간복잡도: O(N^3)
+ex) for k: 1~N
+		for i: 1~N
+			for j: 1~N
+				dis[i][j]와 dis[i][k]+dis[k][j] 중 최소값을 저장
+
+## KMP 알고리즘
+
+
+## 다익스트라 알고리즘
+전제: 음의 가중치가 X
+- 한 노드에서 각 모든 노드까지의 최단거리 구하는 알고리즘
+- 시간복잡도: O(V^2). 우선순위 큐 사용하면 O((V+E)log V)
+- 방문 체크 배열 + 각 노드까지의 최소 비용 저장할 배열 (초기값은 매우 큰값으로)
+
+## 입출력 처리
+- 표준 입출력: System.in, System.out, System.err
+1. Scanner
+- java.util.Scanner: 파일, 입력 스트림과 같은 다양한 입력 소스에서 데이터를 읽어 구분자로 토큰화하고 다양한 타입으로 변환하여 값을 리턴 해주는 역할의 클래스 / 데이터 형변환으로 인한 편리함 / 다량의 데이터 처리 시 수행시간이 비효율적
+- 주요 메서드:
+ nextInt()
+nextDouble()
+next() – 문자열 반환 / 유효 문자열 후 White space 문자를 만나면 White space 직전까지 처리
+nextLine() – 문자열 반환 / 개행(Enter) 문자를 만나면 개행문자까지 처리 / next()와 달리 문자열 안에 띄어쓰기를 할 수 있음(space, tab을 포함할 수 있음)
+
+2. BufferedReader
+- java.io.BufferedReader: 필터 스트림 유형 / 줄(line) 단위로 문자열 처리 기능 제공 -> readLine() / 대량의 데이터 처리 시 수행 시간이 효율적
+3. StringBuilder
+- java.lang.StringBuilder: 문자열의 조작을 지원하는 클래스 / 자바에서 상수로 취급되는 문자열을 조작 시마다 새로운 문자열이 생성되는 것을 방지해줌
+
+## 비교 연산자
+래퍼 클래스끼리 비교할 때에는 ‘==’ 연산자 사용 불가 => Integer.compare() 사용 
+문자열끼리 비교는 문자열1.compareTo(문자열2)로 비교 가능 + 날짜끼리 비교도 가능
+- compareTo(): 두 문자열이 단순히 같은지 아닌지를 알려줄 뿐만 아니라 어떤 것이 사전적인 순서로 더 앞,뒤에 존재하는지를 알려준다.
+- 숫자형 캐릭터 숫자로 변환: ‘0’ 빼주기
+- contains: 문자열.contains(특정문자열) => 대소문자 구분 
+- substring(문자열, 시작인덱스, 끝인덱스(생략하면 끝까지)) : 문자열 자르기 
+
+
+## Map 자료구조
+Map: <key, value>
+key 중복 불가능 + 동일 값 넣으면 가장 최근 값 적용
+- 주요 메서드
+Map.put(key, value): 맵 안에 값 넣기 
+Map.get(key): Map 안의 값 가져오기 
+Map.size(): Map 크기 확인
+Map.replace(key, value): Map 안의 내용 변경하기 
+Map.containsKey(key), Map.containsValue(value): Map 안에 특정 key, value 있는지 확인
+** contains() 메서드는 대상 문자열에 특정 문자열이 포함되어 있는지를 확인하는 역할 
+-> 이때, 대소문자 + 공백 구분함
+Map.remove(key): Map 안의 내용 삭제 
+Map.getOrDefault(key, default): key가 있으면 value, 없으면 default 호출 
+Map.putIfAbsent(key, value): key가 없거나  value가 null일 때만 삽입
+
+- Map의 종류: Hash, Tree, LinkedHash, HashTable
+HashMap: Map 안에서 key/value에 따른 순서 없음
+TreeMap: key 값에 따라 오름차순 정렬. 정렬 때문에 대량의 데이터 삽입/삭제 시 오래 걸림
+LinkedHashMap: 삽입 순서에 따라 정렬
+HashTable: key/value에 null 넣을 수 없음 / 동기화 돼 있음
+
+## Set 자료구조
+Set의 특징: 중복 값 삽입 불가 + 특정한 순서를 가지고 있음
+- 주요 메서드
+set이름. add("값"): 값 추가하기  
+set이름.size(): 크기 확인하기
+
+- Iterator 활용해 Set 내용 출력하기
+Iterator<데이터타입> iterator이름 = set이름.Iterator(); 
+syso.Iterator이름.next() // 담은 set 출력하기  
+또는  
+while (iterator이름.hasNext()) {
+syso.iterator이름.next()  // 값이 없을 때까지 출력
+} 
+
+- Set의 종류: HashSet, LinkedHashSet, TreeSet
+add, contains, next
+=> 문자열 관련 문제 풀 때, 시간 복잡도 문제 해결 가능
+
+HashSet
+- null 입력은 가능하지만 한 번만 저장 가능하고 중복될 수 없습니다.
+- 객체(데이터)를 중복 저장할 수 없고, 순서를 보장하지 않습니다.
+- 내부적으로 HashMap을 사용합니다.
+TreeSet
+- null 입력은 가능하지만 한 번만 저장 가능하고 중복될 수 없습니다.
+- 객체(데이터)를 중복 저장할 수 없지만 오름차순으로 데이터를 정렬합니다.
+- 내부적으로 TreeMap을 사용합니다.
+LinkedHashSet
+- null 입력은 가능하지만 한 번만 저장 가능하고 중복될 수 없습니다
+- 객체(데이터)를 중복 저장할 수 없지만 입력한 순서대로 데이터를 정렬합니다.
+- 내부적으로 LinkedHashMap을 사용합니다.
+
+## PriorityQueue 자료구조
+- 들어간 순서와는 상관없이 높은 우선순위를 가진 원소가 먼저나온다는 특징
+- 삽입, 삭제 : O(log n)
+ex)
+// 낮은 수가 우선순위를 가짐
+PriorityQueue<Integer> pq = new PriorityQueue<>();
+// 높은 수가 우선순위를 가짐
+PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
+// 사전 순으로 더 빨리오는 문자열이 우선순위를 가짐
+PriorityQueue<String> pq = new PriorityQueue<>();
+
+- 삽입: add(), offer() => add는 큐 공간 없이 삽입 시 Exception, 그러나 offer는 null 반환
+- 삭제: poll(), remove() => 둘다 front(맨 앞) 원소 제거 후 반환, 큐 비었을 때 poll은 null 반환, remove는 Exception + remove(E element)처럼 직접 원소를 제거도 가능
++ removeAll(Collection<?>) => 파라미터로 준 컬렉션의 겹치는 원소들 제거
+- 기타: peek() => 첫 번째 데이터 반환, 큐 비어있다면 null 반환, size(), toArray(), clear()
+        iterator() => 데이터 지우지 않고 순회할 경우 사용
+
+- 우선순위 지정
+1) Comparable - compareTo
+새로운 클래스를 정의 하고 Comparable을 상속받아 오름차순의 기준을 직접 정의하는 것이다.
+
+compareTo 함수를 오버라이딩 하여 재정의 하면 priorityQueue 를 바로 사용할 수 있다.
+
+ public class People implements Comparable<People>{
+	String name;
+	int age;
+	int height;
+
+	@Override
+	public int compareTo(People o) {
+    // 키로 오름차순 정렬
+    // 현재 객체가 o보다 작으면 -1, 크면 1 반환
+    // 동일하면 0 반환
+		return (this.height > o.height ? 1 : -1);
+    }
+}
+
+2) Comparator - compare
+priorityQueue 를 정의 할 때 Comparator를 통해 compare 함수를 오버라이딩 하는 방법이다.
+
+PriorityQueue<People> pq = new PriorityQueue<>(new Comparator<People>() {
+    	@Override
+		public int compare(People o1, People o2) {
+    		return o1.height > o2.height ? 1 : -1;
+        	}
+    	});
