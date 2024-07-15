@@ -1,0 +1,26 @@
+1. 조건문
+CASE 
+  WHEN ~ THEN
+  WHEN ~ THEN
+  ELSE ~
+END
+
+2. 문자열과 날짜 데이터 변환
+  1) STRING -> DATE
+    - STR_TO_DATE('20201103', '%Y%m%d%H%i%s') => 2020-11-03 09:00:00
+  2) DATE -> STRING
+    - DATE_FORMAT(DATE, '%Y/%m/%d') => 2024/07/15
+  
+3. 날짜 데이터 연산
+  - YEAR(DATE), MONTH(DATE), HOUR(DATE), MINUTE(DATE), SECOND(DATE)  
+  - NOW()
+  - DATEDIFF(DATE1, DATE2)
+  - DATE_ADD(), DATE_SUB() 
+  ex) DATE_ADD(NOW(), INTERVAL 1 YEAR), DATE_SUB(NOW(), INTERVAL 1 SECOND), DATE_SUB(NOW(), INTERVAL 1 MINUTE)
+
+4. 숫자 함수
+  - ABS(숫자), CEIL(숫자), FLOOR(숫자)
+  - ROUND(숫자, 자릿수), TRUNCATE(숫자, 자릿수) 
+  - POW(X, Y) => X의 Y승, MOD(분자, 분모) => 나머지
+
+5. 문자열 합치기 => CONCAT(문자열1, 문자열2, ...)
