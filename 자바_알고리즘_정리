@@ -149,3 +149,17 @@ PriorityQueue<People> pq = new PriorityQueue<>(new Comparator<People>() {
     		return o1.height > o2.height ? 1 : -1;
         	}
     	});
+
+## List 자료구조
+- ArrayList
+내부적으로 Object 타입의 배열([ ]) 구조로 구성되어 있으며 인덱스를 기반으로 각각의 요소(element)에 접근하여 검색(get()), 추가(add()), 삭제(remove()) 등의 작업을 수행할 수 있다.
+
+- LinkedList
+내부적으로 노드와 포인터(=링크)를 가진 구조로 구성되어 있으며, 포인터를 통해 각각의 노드에 접근하여 검색(get()), 추가(add()), 삭제(remove()) 등의 작업을 수행할 수 있다.
+
+- ArrayList vs LinkedList
+ArrayList는 내부적으로 배열 구조를 가지고 있는 반면, LinkedList는 내부적으로 노드와 포인터 구조로 이루어져 있다.
+ArrayList는 인덱스를 통해 빠르게 검색할 수 있는 반면, LinkedList는 처음 또는 끝에서부터 순차적으로 검색을 수행해야 한다.
+ArrayList는 중간에 데이터를 추가 또는 삭제 시, 그 위치 이후의 데이터들을 한 칸씩 앞으로 이동시켜야 하므로 시간 복잡도는 O(n)이다. 
+반면, LinkedList는 데이터를 추가 또는 삭제시, 이전 노드와 이후 노드의 포인터만 다시 연결하면 되므로 작업 자체의 시간 복잡도는 O(1)이다. 
+(물론, 데이터를 탐색한 후 추가 또는 삭제하는 상황이라면 시간 복잡도는 동일하게 O(n)이 걸린다.)
